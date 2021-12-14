@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="password-strength.js"></script>
+    <title>Password Generator</title>
+</head>
+<body>
+    <h1>Password Generator</h1>
+    <div class="container">
+        <form action="password.php" method="post" target="password">
+            <div id="settings">
+                <div>
+                    <p>Security Level:</p>
+                    <input type="radio" name="sLevel" id="sLevel1" value="1">
+                    <label for="sLevel1">upper</label>
+                    <input type="radio" name="sLevel" id="sLevel2" value="2">
+                    <label for="sLevel2">numbers</label>
+                    <input type="radio" name="sLevel" id="sLevel3" value="3">
+                    <label for="sLevel3">upper + numbers</label>
+                    <input type="radio" name="sLevel" id="sLevel4" value="4" checked>
+                    <label for="sLevel4">all</label>
+                </div>
+                <br>
+                <div>
+                    <input id="pwLength" name="pwLength" type="number" value="20" min="1" max="30"/>
+                </div>
+                <br>
+                <button type="button" onclick="copy()"><img src="./images/content_copy_black_24dp.svg" alt=""></button>
+                <button type="submit" onclick="CheckPasswordStrength()"><img src="./images/loop_black_24dp.svg" alt=""></button>
+            </div>
+        </form>
+        <div id="output">
+            <div id="password-frame">
+                <iframe name="password" frameborder="0" scrolling="no"></iframe>
+            </div>
+            <br>
+            <div>
+                <meter min="0" low="2" high="3" optimum="4" max="5" id="password-strength-meter" value="0"></meter>
+            </div>
+        </div>
+</div>
+</body>
+</html>
