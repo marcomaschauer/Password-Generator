@@ -12,7 +12,7 @@
 <body>
     <h1>Password Generator</h1>
     <div class="container">
-        <form onsubmit="generatePassword()" method="post" target="password">
+        <form onsubmit="return false" method="get">
             <div id="settings">
                 <div>
                     <p>Security Level:</p>
@@ -27,11 +27,11 @@
                 </div>
                 <br>
                 <div>
-                    <input id="pwLength" name="pwLength" type="number" value="20" min="1" max="30"/>
+                    <input id="pwLength" name="pwLength" type="number" value="20" min="1" max="55"/>
                 </div>
                 <br>
                 <button type="button" onclick="copy()"><img src="./images/content_copy_black_24dp.svg" alt=""></button>
-                <button type="submit" onclick="CheckPasswordStrength()"><img src="./images/loop_black_24dp.svg" alt=""></button>
+                <button type="submit" onclick="generatePassword()"><img src="./images/loop_black_24dp.svg" alt=""></button>
             </div>
         </form>
         <div id="output">
