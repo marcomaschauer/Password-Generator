@@ -36,7 +36,35 @@ function checkSymbol(stringToCheck){
     return /[\$%&\/\(\)=\?\}\{@#\*\+!]+/g.test(stringToCheck)
 }
 function copy(){
-    var copyText = document.getElementById("password-frame").children[0].contentWindow.document.getElementById("password").innerText
+    var copyText = document.getElementById("password-frame").children[0].innerText;
     navigator.clipboard.writeText(copyText);
     //document.getElementById("new_coder").innerHTML = <p>Password copied</p>
+}
+function generatePassword(){
+    var securityLevel = document.querySelector('input[name="sLevel"]:checked').value;
+    var length = document.getElementById("pwLength").value;
+    var uppercase = "ABCDEFGHKLMNOPRSTUVWXYZ";
+    var lowercase = "abcdefghiklmnoprstuvwxyz";
+    var number = "0123456789";
+    var specialChar = "$%&/()=?}{@#*+!";
+    switch (securityLevel) {
+        case '1':
+            var passwordlist = uppercase + lowercase;
+            break;
+        case '2':
+            var passwordlist = lowercase + number;
+            break;
+        case '3':
+            var passwordlist = lowercase + uppercase + number;
+            break;
+        case '4':
+            var passwordlist = lowercase + uppercase + number +specialChar;
+            break;
+    }
+    var password = "";
+    for (let index = 0; index < length; index++) {
+        password += passwordlist[Math.floor(Math.random() * passwordlist.length)];
+    }
+    //console.log(password);
+    document.getElementById("password-frame").children[0].innerText = password;
 }

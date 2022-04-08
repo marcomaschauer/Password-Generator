@@ -1,9 +1,12 @@
 {
-    "theme_color" : "#f69435",
-    "background_color" : "#f69435",
-    "display" : "fullscreen",
-    "scope" : "/",
-    "start_url" : "/",
-    "name" : "Password Generator",
-    "short_name" : "Password Generator"
+  "manifest_version": 2,
+
+  "name": "Password Generator",
+  "description": "A simple password generator",
+  "version": "1.0",
+
+  "browser_action": {
+   "default_icon": "images/key_white_48dp.svg",
+   "default_popup": "index.html"
+  }
 }
