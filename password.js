@@ -1,15 +1,8 @@
 function generatePassword(){ 
     var securityLevel = document.querySelector('input[name="sLevel"]:checked').value;
     var length = document.getElementById("pwLength").value;
-    if (length > 55) {
-        document.getElementById("password-frame").children[0].innerText = "Passwords can't be longer than 55 characters";
-        var col = document.getElementById("password-frame").children[0];
-        col.style.color="#FF0000"
-        return false;
-    }
-    else{
-        var col = document.getElementById("password-frame").children[0];
-        col.style.color="#FFFFFF"
+    if(!checkPasswordLength(length)){
+        return false
     }
     var uppercase = "ABCDEFGHKLMNOPRSTUVWXYZ";
     var lowercase = "abcdefghiklmnoprstuvwxyz";
@@ -74,8 +67,21 @@ function checkUpperCaseLetter(stringToCheck){
 function checkSymbol(stringToCheck){
     return /[\$%&\/\(\)=\?\}\{@#\*\+!]+/g.test(stringToCheck)
 }
+function checkPasswordLength(length){
+    if (length > 55) {
+        document.getElementById("password-frame").children[0].innerText = "Passwords can't be longer than 55 characters";
+        var col = document.getElementById("password-frame").children[0];
+        col.style.color="#FF0000"
+        return false;
+    }
+    else{
+        var col = document.getElementById("password-frame").children[0];
+        col.style.color="#FFFFFF"
+        return true
+    }
+}
 function copy(){
     var copyText = document.getElementById("password-frame").children[0].innerText;
     navigator.clipboard.writeText(copyText);
-    //document.getElementById("new_coder").innerHTML = <p>Password copied</p>
+    document.getElementById("password-frame").children[0].innerText = "Password copied!";
 }
