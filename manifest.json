@@ -4,9 +4,11 @@
   "name": "Password Generator",
   "description": "A simple password generator",
   "version": "1.0",
-
+  "permissions": [
+    "clipboardWrite"
+  ],
   "browser_action": {
-   "default_icon": "images/key_white_48dp.svg",
-   "default_popup": "index.html"
+   "default_popup": "index.html",
+   "default_icon": "images/key_white_48dp.svg"
   }
 }
