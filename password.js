@@ -63,7 +63,7 @@ function checkSymbol(stringToCheck){
     return /[\$%&\/\(\)=\?\}\{@#\*\+!]+/g.test(stringToCheck)
 }
 function checkPasswordLength(length){
-    if (length > 55) {
+    if (length > 40) {
         document.getElementById("password-frame").children[0].innerText = "Passwords can't be longer than 55 characters";
         var col = document.getElementById("password-frame").children[0];
         col.style.color="#FF0000"
