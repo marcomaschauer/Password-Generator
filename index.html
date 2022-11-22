@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
     <script src="password.js"></script>
     <title>Password Generator</title>
-    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <h1>Password Generator</h1>
@@ -16,16 +15,16 @@
             <div id="settings">
                 <div>
                     <p>Add characters:</p>
-                    <input type="checkbox" name="securityLevel" id="uppercase" value="1">
+                    <input type="checkbox" name="securityLevel" id="uppercase" value="1" checked>
                     <label for="uppercase">upper</label>
-                    <input type="checkbox" name="securityLevel" id="numbers" value="1">
+                    <input type="checkbox" name="securityLevel" id="numbers" value="1" checked>
                     <label for="numbers">numbers</label>
-                    <input type="checkbox" name="securityLevel" id="special" value="1">
+                    <input type="checkbox" name="securityLevel" id="special" value="1" checked>
                     <label for="special">special</label>
                 </div>
                 <br>
                 <div>
-                    <input id="pwLength" name="pwLength" type="number" value="20" min="1" max="55"/>
+                    <input id="pwLength" name="pwLength" type="number" value="20" min="1" max="40"/>
                 </div>
                 <br>
                 <button type="button" onclick="copy()"><img src="./images/content_copy_black_24dp.svg" alt=""></button>

@@ -1,10 +1,4 @@
 function getPassword(){ 
-    var password = generatePassword()
-    //console.log(password);
-    document.getElementById("password-frame").children[0].innerText = password;
-    CheckPasswordStrength();
-}
-function generatePassword(){
     var length = document.getElementById("pwLength").value;
     if(!checkPasswordLength(length)){
         return false
@@ -27,7 +21,9 @@ function generatePassword(){
     for (let index = 0; index < length; index++) {
         password += passwordlist[Math.floor(Math.random() * passwordlist.length)];
     }
-    return password
+    //console.log(password);
+    document.getElementById("password-frame").children[0].innerText = password;
+    CheckPasswordStrength();
 }
 async function CheckPasswordStrength (){
     await sleep(50);
