@@ -17,9 +17,10 @@ h1, p{
     flex-direction: column;
 }
 p{
-    display: inline-block;
+    display: inline;
 }
 #password-frame{
+    display: inline;
     margin: 0 auto;
 }
 iframe{
@@ -49,7 +50,6 @@ button{
 }
 #output{
     margin-top: 1rem;
-    width: 28rem;
     padding: 1rem;
     background-color: #37342f;
     box-shadow: 0px 0px 5px 4px rgba(189,175,175,0.74);

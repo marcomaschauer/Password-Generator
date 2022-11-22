@@ -15,15 +15,13 @@
         <form onsubmit="return false" method="get">
             <div id="settings">
                 <div>
-                    <p>Security Level:</p>
-                    <input type="radio" name="sLevel" id="sLevel1" value="1">
-                    <label for="sLevel1">upper</label>
-                    <input type="radio" name="sLevel" id="sLevel2" value="2">
-                    <label for="sLevel2">numbers</label>
-                    <input type="radio" name="sLevel" id="sLevel3" value="3">
-                    <label for="sLevel3">upper + numbers</label>
-                    <input type="radio" name="sLevel" id="sLevel4" value="4" checked>
-                    <label for="sLevel4">all</label>
+                    <p>Add characters:</p>
+                    <input type="checkbox" name="securityLevel" id="uppercase" value="1">
+                    <label for="uppercase">upper</label>
+                    <input type="checkbox" name="securityLevel" id="numbers" value="1">
+                    <label for="numbers">numbers</label>
+                    <input type="checkbox" name="securityLevel" id="special" value="1">
+                    <label for="special">special</label>
                 </div>
                 <br>
                 <div>
@@ -31,18 +29,19 @@
                 </div>
                 <br>
                 <button type="button" onclick="copy()"><img src="./images/content_copy_black_24dp.svg" alt=""></button>
-                <button type="submit" onclick="generatePassword()"><img src="./images/loop_black_24dp.svg" alt=""></button>
+                <button type="submit" onclick="getPassword()"><img src="./images/loop_black_24dp.svg" alt=""></button>
+            </div>
+            <div id="output">
+                <div id="password-frame">
+                    <p id="password"></p>
+                </div>
+                <br>
+                <div>
+                    <meter min="0" low="2" high="3" optimum="4" max="5" id="password-strength-meter" value="0"></meter>
+                </div>
             </div>
         </form>
-        <div id="output">
-            <div id="password-frame">
-                <p id="password"></p>
-            </div>
-            <br>
-            <div>
-                <meter min="0" low="2" high="3" optimum="4" max="5" id="password-strength-meter" value="0"></meter>
-            </div>
-        </div>
+
 </div>
 </body>
 </html>
