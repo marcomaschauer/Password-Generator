@@ -1,0 +1,13 @@
+services:
+  nginx:
+    build:
+      dockerfile: dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx.rule=Host(`passwort.marcom.one`)"
+    networks:
+      - traefik_web
+
+networks:
+  traefik_web:
+    external: true
