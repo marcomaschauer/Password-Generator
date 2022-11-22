@@ -4,8 +4,8 @@ function generatePassword(){
     if(!checkPasswordLength(length)){
         return false
     }
-    var uppercase = "ABCDEFGHKLMNOPRSTUVWXYZ";
-    var lowercase = "abcdefghiklmnoprstuvwxyz";
+    var uppercase = "ABCDEFGHKMNOPRSTUVWXYZ";
+    var lowercase = "abcdefghkmnoprstuvwxyz";
     var number = "0123456789";
     var specialChar = "$%&/()=?}{@#*+!";
     switch (securityLevel) {
