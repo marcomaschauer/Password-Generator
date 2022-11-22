@@ -1,5 +1,10 @@
-function generatePassword(){ 
-    var securityLevel = document.querySelector('input[name="sLevel"]:checked').value;
+function getPassword(){ 
+    var password = generatePassword()
+    //console.log(password);
+    document.getElementById("password-frame").children[0].innerText = password;
+    CheckPasswordStrength();
+}
+function generatePassword(){
     var length = document.getElementById("pwLength").value;
     if(!checkPasswordLength(length)){
         return false
@@ -8,27 +13,21 @@ function generatePassword(){
     var lowercase = "abcdefghkmnprstuvwxyz";
     var number = "123456789";
     var specialChar = "$&?#!";
-    switch (securityLevel) {
-        case '1':
-            var passwordlist = uppercase + lowercase;
-            break;
-        case '2':
-            var passwordlist = lowercase + number;
-            break;
-        case '3':
-            var passwordlist = lowercase + uppercase + number;
-            break;
-        case '4':
-            var passwordlist = lowercase + uppercase + number +specialChar;
-            break;
+    var passwordlist = lowercase;
+    if (document.getElementById("uppercase").checked) {
+        passwordlist += uppercase;
+    }
+    if (document.getElementById("numbers").checked) {
+        passwordlist += number;
+    }
+    if (document.getElementById("special").checked) {
+        passwordlist += specialChar;
     }
     var password = "";
     for (let index = 0; index < length; index++) {
         password += passwordlist[Math.floor(Math.random() * passwordlist.length)];
     }
-    //console.log(password);
-    document.getElementById("password-frame").children[0].innerText = password;
-    CheckPasswordStrength();
+    return password
 }
 async function CheckPasswordStrength (){
     await sleep(50);
@@ -80,8 +79,10 @@ function checkPasswordLength(length){
         return true
     }
 }
-function copy(){
+async function copy(){
     var copyText = document.getElementById("password-frame").children[0].innerText;
     navigator.clipboard.writeText(copyText);
     document.getElementById("password-frame").children[0].innerText = "Password copied!";
+    await sleep(2000)
+    document.getElementById("password-frame").children[0].innerText = copyText;
 }
