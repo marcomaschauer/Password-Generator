@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Glory:wght@100;200;400;700&display=swap');
+@import url('./Glory/Glory-VariableFont_wght.ttf');
 html{
     background-color: #e3e3e3;
     background-image: url(./images/background1.jpg);
@@ -6,6 +6,11 @@ html{
     margin-bottom: 5%;
     font-family: 'Glory', sans-serif;
     color: white;
+    font-size: 20px;
+    font-weight: 200;
+}
+input{
+    font-size: 18px;
 }
 body{
     margin: 1 0 1 0;
@@ -16,16 +21,17 @@ h1, p{
     align-items: center;
     flex-direction: column;
 }
-p{
-    display: inline;
+h1{
+    margin-bottom: 1rem;
 }
 #password-frame{
-    display: inline;
     margin: 0 auto;
 }
-iframe{
-    height: 2rem;
-    width: 100%;
+#password{
+    width: auto
+}
+#message-frame{
+    margin-top: 1rem;
 }
 .container{
     display: flex;
@@ -33,18 +39,17 @@ iframe{
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    padding: 2em 2em 0em 2em;
 }
 button{
     font-size: 14px;
-    min-height: 30px;
-    min-width: 30px;
+    min-height: 50px;
+    min-width: 50px;
     padding: 4px 16px;
-    /*border-radius: 100px;*/
+    border-radius: 100px;
 }
 #password-strength-meter {
     background-color: rgba(0, 0, 0, 0.1);
-    width: 70%;
+    width: 80%;
     box-sizing: border-box;
     border: solid 2px black; 
 }
@@ -57,8 +62,7 @@ button{
     -moz-box-shadow: 0px 0px 5px 4px rgba(189,175,175,0.74);
 }
 #settings{
-    padding: 2rem;
-
+    padding: 1rem;
     background-color: #37342f;
     box-shadow: 0px 0px 5px 4px rgba(189,175,175,0.74);
     -webkit-box-shadow: 0px 0px 5px 4px rgba(189,175,175,0.74);

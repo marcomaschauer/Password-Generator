@@ -63,9 +63,10 @@ function checkSymbol(stringToCheck){
     return /[\$%&\/\(\)=\?\}\{@#\*\+!]+/g.test(stringToCheck)
 }
 function checkPasswordLength(length){
-    if (length > 40) {
-        document.getElementById("password-frame").children[0].innerText = "Passwords can't be longer than 40 characters";
-        var col = document.getElementById("password-frame").children[0];
+    document.getElementById("message-frame").children[0].innerText = "";
+    if (length > 100) {
+        document.getElementById("message-frame").children[0].innerText = "Passwords can't be longer than 100 characters";
+        var col = document.getElementById("message-frame").children[0];
         col.style.color="#FF0000"
         return false;
     }
@@ -77,10 +78,10 @@ function checkPasswordLength(length){
 }
 async function copy(){
     var copyText = document.getElementById("password-frame").children[0].innerText;
-    if (!(document.getElementById("password-frame").children[0].innerText == "Passwords can't be longer than 40 characters")) {
+    if (!(document.getElementById("message-frame").children[0].innerText == "Passwords can't be longer than 100 characters")) {
         navigator.clipboard.writeText(copyText);
-        document.getElementById("password-frame").children[0].innerText = "Password copied!";
+        document.getElementById("message-frame").children[0].innerText = "Password copied!";
         await sleep(2000)
-        document.getElementById("password-frame").children[0].innerText = copyText;
+        document.getElementById("message-frame").children[0].innerText = "";
     }
 }
