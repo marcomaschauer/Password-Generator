@@ -1,4 +1,4 @@
-function getPassword(){ 
+function getPassword(){ //main
     var length = document.getElementById("pwLength").value;
     if(!checkPasswordLength(length)){
         return false
@@ -7,7 +7,10 @@ function getPassword(){
     var lowercase = "abcdefghkmnprstuvwxyz";
     var number = "123456789";
     var specialChar = "$&?#!";
-    var passwordlist = lowercase;
+    var passwordlist = "";
+    if (document.getElementById("lower").checked) {
+        passwordlist = lowercase;
+    }
     if (document.getElementById("uppercase").checked) {
         passwordlist += uppercase;
     }
@@ -18,12 +21,35 @@ function getPassword(){
         passwordlist += specialChar;
     }
     var password = "";
-    for (let index = 0; index < length; index++) {
-        password += passwordlist[Math.floor(Math.random() * passwordlist.length)];
+    while (!contains(password)) {
+        password = generatePassword(length, passwordlist);
     }
     //console.log(password);
     document.getElementById("password-frame").children[0].innerText = password;
     CheckPasswordStrength();
+}
+function generatePassword(length, wordlist){
+    var password = "";
+    for (let index = 0; index < length; index++){
+        password += wordlist[Math.floor(Math.random() * wordlist.length)];
+    }
+    return password;
+}
+function contains(string){
+    var x = true;
+    if (document.getElementById("lower").checked) {
+        x = checkLowerCaseLetter(string);
+    }
+    if (document.getElementById("uppercase").checked) {
+        x = checkUpperCaseLetter(string);
+    }
+    if (document.getElementById("numbers").checked) {
+        x = checkNumber(string);
+    }
+    if (document.getElementById("special").checked) {
+        x = checkSymbol(string);
+    }
+    return x;
 }
 async function CheckPasswordStrength (){
     await sleep(50);
@@ -53,17 +79,23 @@ async function CheckPasswordStrength (){
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-function checkNumber(stringToCheck){
-    return /\d+/g.test(stringToCheck)
+function checkLowerCaseLetter(stringToCheck){
+    return /[a-z]+/g.test(stringToCheck)
 }
 function checkUpperCaseLetter(stringToCheck){
     return /[A-Z]+/g.test(stringToCheck)
+}
+function checkNumber(stringToCheck){
+    return /\d+/g.test(stringToCheck)
 }
 function checkSymbol(stringToCheck){
     return /[\$%&\/\(\)=\?\}\{@#\*\+!]+/g.test(stringToCheck)
 }
 function checkPasswordLength(length){
     document.getElementById("message-frame").children[0].innerText = "";
+    if (length == ""){
+        return false
+    }
     if (length > 100) {
         document.getElementById("message-frame").children[0].innerText = "Passwords can't be longer than 100 characters";
         var col = document.getElementById("message-frame").children[0];
@@ -85,3 +117,5 @@ async function copy(){
         document.getElementById("message-frame").children[0].innerText = "";
     }
 }
+
+
