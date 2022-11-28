@@ -1,10 +1,10 @@
-@import url('./Glory/Glory-VariableFont_wght.ttf');
+@import '/Glory/Glory-VariableFont_wght.ttf';
 html{
     background-color: #e3e3e3;
     background-image: url(./images/background1.jpg);
     margin: 0%;
     margin-bottom: 5%;
-    font-family: 'Glory', sans-serif;
+    font-family: 'Glory';
     color: white;
     font-size: 20px;
     font-weight: 200;
