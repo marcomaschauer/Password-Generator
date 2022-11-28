@@ -35,20 +35,27 @@ function generatePassword(length, wordlist){
     return password;
 }
 function contains(string){
-    var x = true;
     if (document.getElementById("lower").checked) {
-        x = checkLowerCaseLetter(string);
+        if (!checkLowerCaseLetter(string)){
+            return false;
+        }
     }
     if (document.getElementById("uppercase").checked) {
-        x = checkUpperCaseLetter(string);
+        if (!checkUpperCaseLetter(string)){
+            return false;
+        }
     }
     if (document.getElementById("numbers").checked) {
-        x = checkNumber(string);
+        if (!checkNumber(string)){
+            return false;
+        }
     }
     if (document.getElementById("special").checked) {
-        x = checkSymbol(string);
+        if (!checkSymbol(string)){
+            return false;
+        }
     }
-    return x;
+    return true;
 }
 async function CheckPasswordStrength (){
     await sleep(50);
@@ -111,10 +118,8 @@ async function copy(){
         navigator.clipboard.writeText(copyText);
         document.getElementById("message-frame").children[0].innerText = "Password copied!";
         var col = document.getElementById("message-frame").children[0];
-        col.style.color = "#008000"
+        col.style.color = "#c6ff00"
         await sleep(2000)
         document.getElementById("message-frame").children[0].innerText = "";
     }
 }
-
-
