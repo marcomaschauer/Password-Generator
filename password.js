@@ -24,7 +24,6 @@ function getPassword(){ //main
     while (!contains(password)) {
         password = generatePassword(length, passwordlist);
     }
-    //console.log(password);
     document.getElementById("password-frame").children[0].innerText = password;
     CheckPasswordStrength();
 }
@@ -103,16 +102,16 @@ function checkPasswordLength(length){
         return false;
     }
     else{
-        var col = document.getElementById("password-frame").children[0];
-        col.style.color="#FFFFFF"
         return true
     }
 }
 async function copy(){
     var copyText = document.getElementById("password-frame").children[0].innerText;
-    if (!(document.getElementById("message-frame").children[0].innerText == "Passwords can't be longer than 100 characters")) {
+    if (!(copyText == "")) {
         navigator.clipboard.writeText(copyText);
         document.getElementById("message-frame").children[0].innerText = "Password copied!";
+        var col = document.getElementById("message-frame").children[0];
+        col.style.color = "#008000"
         await sleep(2000)
         document.getElementById("message-frame").children[0].innerText = "";
     }
