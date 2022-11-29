@@ -128,3 +128,11 @@ async function copy(){
 function getPasswordEntropy(password, wordlist){
     return Math.trunc(Math.log2(Math.pow(wordlist.length, password.length)));
 }
+function settings(){
+    if (document.getElementById("settings").getAttribute('style') == "visibility: hidden;"){
+        document.getElementById("settings").setAttribute('style', 'visibility: visible')
+    }else{
+        document.getElementById("settings").setAttribute('style', "visibility: hidden;")
+    }
+
+}

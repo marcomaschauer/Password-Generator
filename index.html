@@ -12,7 +12,26 @@
     <h1>Password Generator</h1>
     <div class="container">
         <form onsubmit="return false" method="get">
-            <div id="settings">
+            <div id="output">
+                <br>
+                <br>
+                <div id="password-frame">
+                    <p id="password"></p>
+                    <meter min="0" low="2" high="3" optimum="4" max="5" id="password-strength-meter" value="0"></meter>
+                    <p id="entropy"></p>
+                </div>
+                <br>
+                <hr>
+                <button type="button" onclick="settings()"><img src="./images/settings_24.svg" alt=""></button>
+                <button type="button" onclick="copy()"><img src="./images/content_copy_black_24dp.svg" alt=""></button>
+                <button type="submit" onclick="getPassword()"><img src="./images/loop_black_24dp.svg" alt=""></button>
+                <br>
+                <div id="message-frame">
+                    <p id="messages"></p>
+                </div>
+                <hr>
+            </div>
+            <div id="settings" style="visibility: hidden;">
                 <div>
                     <input type="checkbox" name="securityLevel" id="lower" value="1" checked>
                     <label for="lower">abcd</label>
@@ -25,21 +44,9 @@
                 </div>
                 <br>
                 <div>
-                    <input id="pwLength" name="pwLength" type="number" value="20" min="4" max="100"/>
+                    <input id="pwLength" name="pwLength" type="number" value="15" min="4" max="100"/>
                 </div>
                 <br>
-                <button type="button" onclick="copy()"><img src="./images/content_copy_black_24dp.svg" alt=""></button>
-                <button type="submit" onclick="getPassword()"><img src="./images/loop_black_24dp.svg" alt=""></button>
-                <div id="message-frame">
-                    <p id="messages"></p>
-                </div>
-            </div>
-            <div id="output">
-                <div id="password-frame">
-                    <p id="password"></p>
-                    <meter min="0" low="2" high="3" optimum="4" max="5" id="password-strength-meter" value="0"></meter>
-                    <p id="entropy"></p>
-                </div>
             </div>
         </form>
 </div>
