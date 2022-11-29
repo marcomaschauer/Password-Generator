@@ -26,6 +26,8 @@ function getPassword(){ //main
     }
     document.getElementById("password-frame").children[0].innerText = password;
     CheckPasswordStrength();
+    document.getElementById("password-frame").children[2].innerText = "Entropy: " + getPasswordEntropy(password, passwordlist) + " Bits";
+
 }
 function generatePassword(length, wordlist){
     var password = "";
@@ -102,8 +104,8 @@ function checkPasswordLength(length){
     if (length == ""){
         return false
     }
-    if (length > 100) {
-        document.getElementById("message-frame").children[0].innerText = "Passwords can't be longer than 100 characters";
+    if (length > 100 || length < 4) {
+        document.getElementById("message-frame").children[0].innerText = "Passwords must be between 4 and 100 characters";
         var col = document.getElementById("message-frame").children[0];
         col.style.color="#FF0000"
         return false;
@@ -122,4 +124,7 @@ async function copy(){
         await sleep(2000)
         document.getElementById("message-frame").children[0].innerText = "";
     }
+}
+function getPasswordEntropy(password, wordlist){
+    return Math.trunc(Math.log2(Math.pow(wordlist.length, password.length)));
 }
