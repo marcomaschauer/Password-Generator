@@ -4,7 +4,7 @@ services:
       dockerfile: Dockerfile
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nginx.rule=Host(`passwort.marcom.one`)"
+      - "traefik.http.routers.nginx.rule=Host(`password.marcom.one`)"
     networks:
       - traefik_web
 
