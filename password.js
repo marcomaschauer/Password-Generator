@@ -3,10 +3,10 @@ function getPassword(){ //main
     if(!checkPasswordLength(length)){
         return false
     }
-    var uppercase = "ABCDEFGHKMNPRSTUVWXYZ";
-    var lowercase = "abcdefghkmnprstuvwxyz";
-    var number = "123456789";
-    var specialChar = "$&?#!";
+    var uppercase = "ABCDEFGHIJKLMNOPRSTUVWXYZ";
+    var lowercase = "abcdefghijklmnoprstuvwxyz";
+    var number = "0123456789";
+    var specialChar = "[$%&/\()=?}{@#*+!]";
     var passwordlist = "";
     if (document.getElementById("lower").checked) {
         passwordlist = lowercase;
@@ -128,7 +128,7 @@ async function copy(){
 function getPasswordEntropy(password, wordlist){
     return Math.trunc(Math.log2(Math.pow(wordlist.length, password.length)));
 }
-function settings(){
+function toggleSettings(){
     if (document.getElementById("settings").getAttribute('style') == "visibility: hidden;"){
         document.getElementById("settings").setAttribute('style', 'visibility: visible')
     }else{

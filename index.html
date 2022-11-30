@@ -8,7 +8,7 @@
     <script src="password.js"></script>
     <title>Password Generator</title>
 </head>
-<body onload="getPassword()">
+<body onload="getPassword()" onchange="getPassword()">
     <h1>Password Generator</h1>
     <div class="container">
         <form onsubmit="return false" method="get">
@@ -22,7 +22,7 @@
                 </div>
                 <br>
                 <hr>
-                <button type="button" onclick="settings()"><img src="./images/settings_24.svg" alt=""></button>
+                <button type="button" onclick="toggleSettings()"><img src="./images/settings_24.svg" alt=""></button>
                 <button type="button" onclick="copy()"><img src="./images/content_copy_black_24dp.svg" alt=""></button>
                 <button type="submit" onclick="getPassword()"><img src="./images/loop_black_24dp.svg" alt=""></button>
                 <br>
@@ -44,11 +44,21 @@
                 </div>
                 <br>
                 <div>
+                    <input type="range" class="inputRange" id="pwLengthSlider" value="15" name="range" min="4" max="100">
                     <input id="pwLength" name="pwLength" type="number" value="15" min="4" max="100"/>
                 </div>
                 <br>
             </div>
         </form>
 </div>
+<script>
+    document.querySelector('.inputRange').addEventListener('input', updateValue);
+    document.getElementById('pwLength').addEventListener('input', updateValue);
+
+    function updateValue (e) {
+        var sibling = e.target.previousElementSibling || e.target.nextElementSibling;
+        sibling.value = e.target.value;
+    }
+</script>
 </body>
 </html>

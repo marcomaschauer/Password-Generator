@@ -14,8 +14,7 @@ html{
     font-size: 20px;
     font-weight: 200;
 }
-input{
-    font-size: 18px;
+pwLength{
     max-width: 2.5rem;
 }
 body{
@@ -81,4 +80,7 @@ button{
     font-size: 15px;
     margin-top: 0.5rem;
     align-items: flex-start;
+}
+#pwLengthSlider{
+    width: 10rem;
 }
