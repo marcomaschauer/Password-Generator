@@ -1,4 +1,5 @@
 function getPassword(){ //main
+    //var length = document.getElementById("pwLength").value;
     var length = document.getElementById("pwLength").value;
     if(!checkPasswordLength(length)){
         return false
@@ -8,7 +9,7 @@ function getPassword(){ //main
     var number = "0123456789";
     var specialChar = "[$%&/\()=?}{@#*+!]";
     var passwordlist = "";
-    if (document.getElementById("lower").checked) {
+    if (document.getElementById("lowercase").checked) {
         passwordlist = lowercase;
     }
     if (document.getElementById("uppercase").checked) {
@@ -27,7 +28,7 @@ function getPassword(){ //main
     document.getElementById("password-frame").children[0].innerText = password;
     CheckPasswordStrength();
     document.getElementById("password-frame").children[2].innerText = "Entropy: " + getPasswordEntropy(password, passwordlist) + " Bits";
-
+    createCookie();
 }
 function generatePassword(length, wordlist){
     var password = "";
@@ -37,7 +38,7 @@ function generatePassword(length, wordlist){
     return password;
 }
 function contains(string){
-    if (document.getElementById("lower").checked) {
+    if (document.getElementById("lowercase").checked) {
         if (!checkLowerCaseLetter(string)){
             return false;
         }
@@ -136,3 +137,54 @@ function toggleSettings(){
     }
 
 }
+function loadCookie(){
+    if (document.cookie == "") {
+        createCookie();
+    }else{
+        document.getElementById("pwLength").value = getCookie("pwlength");
+        if(getCookie("lowercase") == "true"){
+            document.getElementById("lowercase").checked = true;
+        }else{
+            document.getElementById("lowercase").checked = false;
+        }
+        if(getCookie("uppercase") == "true"){
+            document.getElementById("uppercase").checked = true;
+        }else{
+            document.getElementById("uppercase").checked = false;
+        }
+        if(getCookie("numbers") == "true"){
+            document.getElementById("numbers").checked = true;
+        }else{
+            document.getElementById("numbers").checked = false;
+        }
+        if(getCookie("special") == "true"){
+            document.getElementById("special").checked = true;
+        }else{
+            document.getElementById("special").checked = false;
+        }
+    }
+    getPassword();
+    
+}
+function createCookie(){
+    document.cookie = "pwlength=" + document.getElementById("pwLength").value;
+    document.cookie = "lowercase=" + document.getElementById("lowercase").checked;
+    document.cookie = "uppercase=" + document.getElementById("uppercase").checked;
+    document.cookie = "numbers=" + document.getElementById("numbers").checked;
+    document.cookie = "special=" + document.getElementById("special").checked;
+}
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }

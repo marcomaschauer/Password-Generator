@@ -8,7 +8,7 @@
     <script src="password.js"></script>
     <title>Password Generator</title>
 </head>
-<body onload="getPassword()" onchange="getPassword()">
+<body onload="loadCookie()" onchange="getPassword()">
     <h1>Password Generator</h1>
     <div class="container">
         <form onsubmit="return false" method="get">
@@ -33,7 +33,7 @@
             </div>
             <div id="settings" style="visibility: hidden;">
                 <div>
-                    <input type="checkbox" name="securityLevel" id="lower" value="1" checked>
+                    <input type="checkbox" name="securityLevel" id="lowercase" value="1" checked>
                     <label for="lower">abcd</label>
                     <input type="checkbox" name="securityLevel" id="uppercase" value="1" checked>
                     <label for="uppercase">ABCD</label>
